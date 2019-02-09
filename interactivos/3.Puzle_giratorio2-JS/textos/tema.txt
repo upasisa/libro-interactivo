@@ -1,0 +1,6 @@
+'Escribe los temas de Flicker a buscar, deben ser seis'
+'Paisaje'
+'Edificios'
+'Insectos'
+'Frutas'
+'Flores'

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>LíneasBèzier</title>
+    <script src="processing.js"></script> 
+  </head>
+  <body>
+<center>
+<script type="text/processing">
+int numberLines = 75;
+int inc = 600/numberLines;
+int a;
+void setup() {
+  size(500, 150);
+  background(255);
+}
+
+void draw() {
+  a = 0;
+  for (int i = 0; i < numberLines; i++) {
+
+    line(0, a, a, height);
+   // line(a, 0, width, a);
+    
+  //  line(0,height-a, a, 0);
+//    line(a,height, width, height-a);
+
+    a += inc;
+  }
+
+}
+</script><canvas></canvas>
+    <h4 style="font-family:Arial">Líneas para crear curvas Bèzier</h4>
+
+  </body>
+</html>

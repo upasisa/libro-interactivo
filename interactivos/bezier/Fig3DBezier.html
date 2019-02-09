@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Figuras con Curvas Bèzier-3D</title>
+    <script src="processing.js"></script>
+  </head>
+  <body>
+    <h1>Figuras con Curvas Bèzier-3D</h1>
+    <script type="text/processing">
+PVector[][] cps;
+
+void setup() {
+  size(700, 700, P3D);
+  background(100);
+  cps = new PVector[3][];
+  cps[0] = new PVector[3];
+  cps[1] = new PVector[3];
+  cps[2] = new PVector[3];
+  
+  cps[0][0] = new PVector(1, 1, 1);
+  cps[1][0] = new PVector(2, 1, 2);
+  cps[2][0] = new PVector(3, 1, 1);
+  cps[0][1] = new PVector(1, 2, 1);
+  cps[1][1] = new PVector(2, 2, 3);
+  cps[2][1] = new PVector(3, 2, 1);
+  cps[0][2] = new PVector(1, 3, 1);
+  cps[1][2] = new PVector(2, 3, -1);
+  cps[2][2] = new PVector(3, 3, 1);
+  
+  float fov = PI/3.0;
+  perspective(fov, float(width)/float(height), 
+            0.01, 200);
+}
+
+float ang = 0;
+
+void draw() {
+  ang += 0.01;
+  background(127, 127, 127);
+  camera(cos(ang) * 5, sin(ang) * 5, 5, 0, 0, 0, 0, 0, -1);
+  stroke(255, 0, 0);
+  line(0, 0, 0, 10, 0, 0);
+  stroke(0, 255, 0);
+  line(0, 0, 0, 0, 10, 0);
+  stroke(0, 0, 255);
+  line(0, 0, 0, 0, 0, 10);
+  
+  fill(0, 0, 255);
+  box(0.3, 0.3, 0.3);
+  
+  drawbeziersurface(cps);
+}
+
+void drawbeziersurface(PVector[][] cps)
+{
+  stroke(0);
+  fill(255);
+  float du = 0.05;
+  float dv = 0.05;
+  beginShape(QUADS);
+  for(float v = 0; v <= 1; v += dv)
+  {
+    for(float u = 0; u <= 1; u += du)
+    {
+      PVector p1, p2, p3, p4;
+      p1 = bezierfunc(u, v, cps);
+      p2 = bezierfunc(u + du, v, cps);
+      p3 = bezierfunc(u + du, v + dv, cps);
+      p4 = bezierfunc(u, v + dv, cps);
+      vertex(p1.x, p1.y, p1.z);
+      vertex(p2.x, p2.y, p2.z);
+      vertex(p3.x, p3.y, p3.z);
+      vertex(p4.x, p4.y, p4.z);
+    }
+  }
+  endShape();
+  
+  noStroke();
+  fill(255, 0, 0);
+  for(int i = 0; i < cps.length; i++)
+  {
+    for(int j = 0; j < cps[i].length; j++)
+    {
+      pushMatrix();
+      translate(cps[i][j].x, cps[i][j].y, cps[i][j].z);
+      sphere(0.1);
+      popMatrix();
+    }
+  }
+}
+
+PVector bezierfunc(float u, float v, PVector[][] cps)
+{
+  PVector ret = new PVector(0, 0, 0);
+  
+  for(int i = 0; i < cps.length; i++)
+  {
+    for(int j = 0; j < cps[i].length; j++)
+    {
+      PVector p = new PVector(cps[i][j].x, cps[i][j].y, cps[i][j].z); 
+      p.mult(bernstein(u, i, cps.length - 1) * bernstein(v, j, cps[i].length - 1));
+      ret.add(p);
+    }
+  }
+  
+  return ret;
+}
+
+float bernstein(float t, int index, int degree)
+{
+  return (factorial(degree)/(float)(factorial(index) * factorial(degree - index))) * pow(t, index) * pow(1 - t, degree - index);
+}
+
+int factorial(int num)
+{
+  if (num <= 0)
+    return 1;
+  else
+    return num * factorial(num - 1);
+}
+    </script>
+    <canvas></canvas>
+  </body>
+</html>

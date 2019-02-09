@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bèzier+Animar+PtosControl</title>
+    <script src="processing.js"></script>
+  </head>
+  <body>
+    <h1>Generar Puntos de control y describir sus trayectorias a partir de la curva</h1>
+    <script type="text/processing">
+
+float[] x = new float[4];
+float[] y = new float[4];
+
+void setup() {
+  size(600, 600);
+  noFill();
+  for(int i = 0; i < 4; i++){
+    x[i] = width * random();
+    y[i] = height * random();
+  }
+}
+
+void draw() {
+  float t = (frameCount * 0.005) % 1.0;
+  background(255);
+  stroke(127);
+  
+  strokeWeight(6);
+  for(int i = 0; i < 4; i++){
+    point(x[i], y[i]);
+  }
+  
+  float xm1 = lerp(x[0], x[1], t);
+  float xm2 = lerp(x[1], x[2], t);
+  float xm3 = lerp(x[2], x[3], t);
+  float ym1 = lerp(y[0], y[1], t);
+  float ym2 = lerp(y[1], y[2], t);
+  float ym3 = lerp(y[2], y[3], t);
+  float xmm1 = lerp(xm1, xm2, t);
+  float xmm2 = lerp(xm2, xm3, t);
+  float ymm1 = lerp(ym1, ym2, t);
+  float ymm2 = lerp(ym2, ym3, t);
+  
+  PVector currentPt = getBezierPoint(t);
+   
+  stroke(150, 190, 190);
+  point(xm1, ym1);
+  point(xm2, ym2);
+  point(xm3, ym3);
+  point(xmm1, ymm1);
+  point(xmm2, ymm2);
+  point(currentPt.x, currentPt.y);
+  
+  strokeWeight(1);
+  line(xm1, ym1, xm2, ym2);
+  line(xm2, ym2, xm3, ym3);
+  line(xmm1, ymm1, xmm2, ymm2);
+  
+  stroke(127);
+  line(x[0], y[0], x[1], y[1]); // bezier handle1
+  line(x[2], y[2], x[3], y[3]); // bezier handle2
+  stroke(220);
+  line(x[1], y[1], x[2], y[2]);
+    
+  strokeWeight(2);
+  stroke(31);
+  beginShape();
+  for(float t = 0; t <= 1.0001; t += 0.01){
+    PVector result = getBezierPoint(t);
+    vertex(result.x, result.y); 
+  }
+  endShape();
+  
+
+}
+
+PVector getBezierPoint(t){
+  float xd = pow((1-t), 3)*x[0] + 3*t*(1-t)*(1-t)*x[1] + 3*t*t*(1-t)*x[2] + t*t*t*x[3];
+  float yd = pow((1-t), 3)*y[0] + 3*t*(1-t)*(1-t)*y[1] + 3*t*t*(1-t)*y[2] + t*t*t*y[3];
+  return new PVector(xd, yd);
+}
+    </script>
+    <canvas></canvas>
+  </body>
+</html>

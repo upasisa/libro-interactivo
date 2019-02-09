@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bèzier Interactuar</title>
+    <script src="processing.js"></script>
+  </head>
+  <body>
+    <h1>Interactuando con Curvas Bèzier-1</h1>
+    <script type="text/processing">
+int  numNodes  = 4;
+int  vertices;
+boolean  vis  = true;
+Node[]  Nodes;
+PFont  pixel;
+float  m  = 100.0;
+void  setup()
+{ vertices  = 0;
+  Nodes  = new Node[numNodes];
+ textSize(  20);
+  textAlign  (CENTER);
+  ellipseMode  (CENTER);
+  size  (800, 600);
+  smooth  ();
+  for  (int i = 0; i < numNodes; i++)  
+{ String numNode = nfs(i, 0);       
+  Nodes[i]  = new Node(m+random(width-(2*m)), m+random(height-(2*m)), numNode);
+  float num  = float(i)/3.0; 
+  if  ((i/3) == num)                             // ###########
+{ Nodes[i].col  = #FF7040;                       // If multiple of 3 means a vertex, so give it another color
+  vertices  += 1;                                // Count the vertices;  
+} //if  ((i/3) == num)                           // ###########
+} //for  (int i = 0; i < numNodes; i++)  
+} //void  setup()
+void  draw()
+{ background  (255);
+  texto();
+  noFill  ();                                     // Draw a Bezier curve by all the nodes .... in 3
+  strokeWeight  (3);
+  stroke  (0);
+  beginShape  ();
+  vertex  (Nodes[0].x, Nodes[0].y);               // start at zero
+  for  (int i = 1; i < (numNodes - 2); i+=3)
+{ bezierVertex  (Nodes[i].x, Nodes[i].y, Nodes[i+1].x, Nodes[i+1].y, Nodes[i+2].x, Nodes[i+2].y);
+} //for  (int i = 1; i < (numNodes - 2); i+=3)
+  endShape  ();
+  if  (vis)                                       // haga las líneas de control
+{ strokeWeight  (0.5);
+  stroke  (100);
+  for  (int i = 1; i < (numNodes - 2); i+=3)
+{ line  (Nodes[i-1].x, Nodes[i-1].y, Nodes[i].x, Nodes[i].y);
+  line  (Nodes[i+1].x, Nodes[i+1].y, Nodes[i+2].x, Nodes[i+2].y);
+} //for  (int i = 1; i < (numNodes - 2); i+=3)
+} //if  (vis)   // haga las líneas de control 
+  for  (int i = 0; i < numNodes; i++)
+{ String numNode = nfs(i, 1);
+  Nodes[i].render ();
+} //for  (int i = 0; i < numNodes; i++)
+} //void  draw()
+void  mouseReleased()
+{ for  (int i = 0; i < numNodes; i++)
+{ Nodes[i].over  = false;
+} //for  (int i = 0; i < numNodes; i++)
+} //void  mouseReleased() 
+void  mouseDragged()
+{ for  (int i = 0; i < numNodes; i++) 
+{ if  (Nodes[i].over == true)
+{ Nodes[i].x  = mouseX;
+  Nodes[i].y  = mouseY;
+  for  (int j = 0; j < numNodes; j++)
+{ if  (j != i){ Nodes[j].over = false;}
+} //for  (int j = 0; j < numNodes; j++)
+} //if  (Nodes[i].over == true)
+} //for  (int i = 0; i < numNodes; i++)
+} //for  (int i = 0; i < numNodes; i++) 
+void  keyPressed()
+{ if  (key == 'a')
+{ numNodes  += 3;
+  setup  ();
+} //if  (key == 'a') 
+  if  (key == 'z' && numNodes > 4)
+{ numNodes  -= 3;
+  setup  ();
+} //if  (key == 'z' && numNodes > 4)
+  if  (key == 'p')
+{ println("Numb, X,Y");
+  for  (int i = 0; i < numNodes; i++)  
+  {println(i+","+int(Nodes[i].x) +","+ int(Nodes[i].y ));
+}
+} 
+} //void  keyPressed()
+class  Node
+{ float  x, y;
+  float  d = 19.0;
+  String  num;
+  boolean  over;
+  color  col;
+  Node  (float _x, float _y, String _num)
+{ x  = _x;
+  y  = _y;
+  num  = _num;
+  over  = false;
+  col  = #D3FF95;
+} //Node  (float _x, float _y, String _num)
+  void  update()
+{ float dis  = dist(mouseX, mouseY, x, y);
+  if  (dis <= d/2){ over = true; }
+  else  { over = false; }
+} //void  update()
+  void  draw()
+{ if  (over) 
+{ strokeWeight  (3);
+  stroke  (0);
+} //void  draw() 
+  else
+{ stroke  (100);
+  strokeWeight  (1);
+} //else 
+  fill  (col);
+  ellipse  (x,y, d, d);
+  fill  (0);
+  text  (num, x, y+4);
+  text  (int( x)+","+int(y), x+10, y+29);
+} //void  draw()
+  void  render()
+{ update  ();
+  if  (vis){ draw(); }
+} //void  render()
+} //class  Node
+void  texto()
+{ fill  (0);
+  text  ("Bèzier", width/2, 20); 
+  String t  = "presiona 'a' para añadir Nodos, 'z' para Remover Nodos  'p' para imprimir posiciones";
+  text  (t, width/2, height-45);
+  fill  (#FF7040);
+  text  (vertices +" Nodos "+(numNodes-vertices)+ " Controles"  , width/2, height-10);
+} //void  texto()
+    </script>
+    <canvas></canvas>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tiempo-Desplazamiento Curvas Bèzier-1</title>
+    <script src="processing.js"></script>
+  </head>
+  <body>
+   <center>
+    <script type="text/processing">
+
+int      numNodes  = 4;
+int      vertices;
+boolean  vis  = true;
+Node[]   Nodes;
+float    m  = 100.0;
+float    tt = 0.0;
+float    t2;
+float    xcalc,ycalc;
+void  setup()
+{ vertices  = 0;
+  textSize(  10);
+  Nodes  = new Node[numNodes];
+  textAlign  (CENTER);
+  ellipseMode  (CENTER);
+  size  (600, 500);
+  smooth  ();
+  for  (int i = 0; i < numNodes; i++)  
+{ String numNode = nfs(i, 0);                    // make string one decimal ####
+  Nodes[i]  = new Node(m+random(width-(2*m)), m+random(height-(2*m)), numNode);
+  float num  = float(i)/3.0;                     // see if i is a multiple of three
+  if  ((i/3) == num)                             // ###########
+{ Nodes[i].col  = #FF7040;                       // If multiple of 3 means a vertex, so give it another color
+  vertices  += 1;                                // Count the vertices;  
+} //if  ((i/3) == num)                           // ###########
+} //for  (int i = 0; i < numNodes; i++)
+  Nodes[0].x = 440;
+  Nodes[0].y = 12;
+  Nodes[1].x = 445;
+  Nodes[1].y = 200;
+  Nodes[2].x = 16;
+  Nodes[2].y = 219;
+  Nodes[3].x = 45;
+  Nodes[3].y = 67;
+  frameRate(10);
+} //void  setup()
+
+void  draw()
+{ background  (255);
+  texto();
+  tt = tt + .02 ;
+  if (tt > 1.01 ) tt =0.0;
+  t2=1.0-tt;
+  println(t2);
+  xcalc = t2*t2*t2*Nodes[0].x  + 3*t2*t2*tt*Nodes[1].x 
+        + 3*t2*tt*tt*Nodes[2].x  + tt*tt*tt*Nodes[3].x;
+  ycalc = t2*t2*t2*Nodes[0].y  + 3*t2*t2*tt*Nodes[1].y 
+        + 3*t2*tt*tt*Nodes[2].y  + tt*tt*tt*Nodes[3].y;
+  ellipse(xcalc,ycalc,10,10);
+  noFill  ();                                     // Draw a Bezier curve by all the nodes .... in 3
+  strokeWeight  (3);
+  stroke  (0);
+  beginShape  ();
+  vertex  (Nodes[0].x, Nodes[0].y);               // start at zero
+  for  (int i = 1; i < (numNodes - 2); i+=3)
+{ bezierVertex  (Nodes[i].x, Nodes[i].y, Nodes[i+1].x, Nodes[i+1].y, Nodes[i+2].x, Nodes[i+2].y);
+} //for  (int i = 1; i < (numNodes - 2); i+=3)
+  endShape  ();
+  if  (vis)                                       // haga las líneas de control
+{ strokeWeight  (0.5);
+  stroke  (100);
+  for  (int i = 1; i < (numNodes - 2); i+=3)
+{ line  (Nodes[i-1].x, Nodes[i-1].y, Nodes[i].x, Nodes[i].y);
+  line  (Nodes[i+1].x, Nodes[i+1].y, Nodes[i+2].x, Nodes[i+2].y);
+} //for  (int i = 1; i < (numNodes - 2); i+=3)
+} //if  (vis)   // haga las líneas de control 
+  for  (int i = 0; i < numNodes; i++)
+{ String numNode = nfs(i, 1);
+  Nodes[i].render ();
+} //for  (int i = 0; i < numNodes; i++)
+} //void  draw()
+
+class  Node
+{ float  x, y;
+  float  d = 19.0;
+  String  num;
+  boolean  over;
+  color  col;
+  Node  (float _x, float _y, String _num)
+{ x  = _x;
+  y  = _y;
+  num  = _num;
+  over  = false;
+  col  = #D3FF95;
+} //Node  (float _x, float _y, String _num)
+  void  update()
+{ float dis  = dist(mouseX, mouseY, x, y);
+  if  (dis <= d/2){ over = true; }
+  else  { over = false; }
+} //void  update()
+  void  draw()
+{ if  (over) 
+{ strokeWeight  (3);
+  stroke  (0);
+} //void  draw() 
+  else
+{ stroke  (100);
+  strokeWeight  (1);
+} //else 
+  fill  (col);
+  ellipse  (x,y, d, d);
+  fill  (0);
+  text  ("P"+num, x, y-8);
+  text  (int( x)+","+int(y), x+10, y+29);
+} //void  draw()
+  void  render()
+{ update  ();
+  if  (vis){ draw(); }
+} //void  render()
+} //class  Node
+void  texto()
+{ fill  (0);
+} //void  texto()
+    </script>
+    <canvas></canvas>
+     <h3 style="font-family:Arial">Tiempo-Desplazamiento Curvas Bèzier-1</h1>
+<!-- 
+  t = "Ecuación Bèzier(t)=P0*(1-t)^3+3*P1*t*(1-t)^2+3*P2*t^2*(1-t)+P3*t^3";
+  text  (t, width/2, 150);
+  text  ("t="+ nfs(tt,1,2),  width/2,height-245);
+  fill  (#FF7040);
+ -->
+
+  </body>
+</html>

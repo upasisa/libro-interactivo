@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Estrategias heurístcas - Matemática</title>
+
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/turn.js"></script>
+	<link href="css/style.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="fonts/font3.css" type="text/css"/>
+ 	<link rel="stylesheet" href="fonts/font4.css" type="text/css"/>
+	<link rel="stylesheet" href="fonts/font5.css" type="text/css"/>
+
+</head>
+
+<body style="margin:0;padding:0; overflow: hidden; ">
+
+	<div id="book">
+	
+		<div class="hard" style="background-image: url(images/fondoHCI.png);  border: 2px; solid black;">
+		<div class="gradient"></div>
+			<h1 class="t11" style="text-shadow: 3px 5px #000; font-size:60px; position: absolute; top: 40px; left:120px; right:20px; text-align: center;"><font color="white">Estrategias heurísticas </font></h1>
+		</div>
+		
+		<div class="hard" style="background-image: url(images/cover.png);">
+		<div class="gradient"></div>
+		<p align="center" style="position: absolute; bottom: 350px; left:0; right:0;"> <a id="logo"><img src="images/logo3.svg" alt="HCI"/></a>	</p>
+		</div>
+		
+<!-- /   /   /   / -->
+		<div class="derecha">
+		<div class="gradient"></div>
+			<p align="center" style="position: absolute; top: 50px; left:0; right:0;"><span style="font-size:36px"><strong><big>Estrategias heurísticas con actividades interactivas al final</big></strong></span><br/></p>
+			<br/><br/>
+			<p align="center" style="position: absolute; top: 240px; left:0; right:0;">
+			Ramiro Antonio Lopera Sánchez<br/>
+			Oscar Ignacio Botero Henao<br/>
+			Oscar Julián Galeano Echeverri<br>
+			Miguel Alberto Becerra Botero<br>
+			Javier Alberto Saldarriaga Cano<br>
+			<br>
+			Institución Universitaria Pascual Bravo<br><br></p>
+			<p align="center" style="position: absolute; bottom: 100px; left:0; right:0;">Fondo Editorial Pascual Bravo<br/><br/><img src="images/logo_pascual.png" width="130px"/></p>
+			<p align="center" style="position: absolute; bottom: 60px; left:0; right:0;">Medellín</p>
+		</div>
+		
+<!-- /   /   /   / -->
+		<div class="izquierda">
+
+		<div class="gradient"></div>
+			<p><span style="font-size:16px">Título de la obra<br/>
+			HCI - Interfaces Humano-Computador orientado a la Inclusión Social<br/><br/>
+			Grupo de Investigación en Ciencias Electrónicas e Informáticas - GICEI<br/>
+			2018</span></p>
+			<br/><br/>
+			<p> <span style="font-size:16px">Diseño del libro: Ramiro Antonio Lopera Sánchez<br/>Diseño de cubierta: Diana María Velásquez García<br/>
+			Librería turn.js: Emmanuel García<br/>
+			Herramienta de edición: DescartesJS<br/>
+			Fuente: Titillium</span></p>
+			<p> <span style="font-size:16px">Fondo Editorial Pascual Bravo<br/>
+			Calle 73 73A-226<br/>
+			PBX: (574) 4480520<br/>
+			Apartado 6564<br/>
+			Medellín, Colombia<br/>
+			<a style="font-size:16px" href="http://www.pascualbravo.edu.co/" target="_blank"><font color="blue">www.pascualbravo.edu.co</font></a></span></p>
+			<p style="font-size:16px; position: absolute; bottom: 60px; left:0; right:0;"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="images/88x31.png" style="height:40px; width:110px" /></a><br/>Excepto donde se indique lo contrario, el contenido creado en este libro está licenciado bajo una licencia Creative Commons Attribution 4.0. Todos los objetos interactivos y los contenidos de esta obra están protegidos por la Ley de Propiedad Intelectual.</p>
+		</div>
+		
+<!-- /   /   /   / -->
+<!-- /   /   /   / -->
+		<div class="derecha">
+		<div class="gradient"></div>
+			<h2 class="t2">Tabla de contenido</h2>
+			<p style="margin-top: 3px">
+			   <a class="a2" href="javascript:myFunction(7)">Prefacio<span class="span2">7</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(8)">¿Por qué HTML5?<span class="span2">8</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(9)">¿Qué es un Objeto Interactivo de Aprendizaje?<span class="span2">9</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(0)"><span class="span2"> &nbsp;</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(13)">INTRODUCCIÓN AL HCI<span class="span2">13</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(15)">¿Qué es el HCI?<span class="span2">15</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(17)">Interfaces de usuarios<span class="span2">17</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(19)">Algunos datos estadísticos<span class="span2">19</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(23)">Términos sobre HCI<span class="span2">23</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(0)"><span class="span2"> &nbsp;</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(25)">INTERFACES PARA LA INCLUSIÓN<span class="span2">25</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(27)">Introducción<span class="span2">27</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(28)">La brecha digital<span class="span2">28</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(34)">Conclusiones<span class="span2">34</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(35)">Actividad interactiva<span class="span2">35</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(0)"><span class="span2">&nbsp;</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(37)">CURVAS DE BÈZIER<span class="span2">37</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(39)">Historia<span class="span2">39</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(42)">Introducción<span class="span2">42</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(46)">Actividad interactiva<span class="span2">46</span></a></p>
+
+
+			<h3>3</h3>
+		</div>
+		
+<!-- /   /   /   / -->
+		<div class="izquierda">
+		<div class="gradient"></div>
+		<h2>&nbsp;</h2>
+			<p><a class="a2" href="javascript:myFunction(47)">Aplicaciones<span class="span2">47</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(48)">Actividad interactiva<span class="span2">48</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(49)">Actividad interactiva<span class="span2">49</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(50)">Algoritmo de Casteljau <span class="span2">50</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(53)">Actividad interactiva <span class="span2">53</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(54)">Propiedades y superficies de Bèzier <span class="span2">54</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(0)"><span class="span2"> &nbsp;</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(59)">TOKENIZADOR PARA EL LENGUAJE DE SEÑAS <span class="span2">59</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(61)">Introducción <span class="span2">61</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(62)">Tipos de interpolación  <span class="span2">62</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(64)">Estructura de un compilador  <span class="span2">64</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(66)"> Procedimiento del tokenizador para lexemas del lenguaje de señas <span class="span2">66</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(71)">Conclusiones <span class="span2">71</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(71)">Impactos actuales o potenciales del HCI hacia la atención de necesidades a la población en alguna situación de discapacidad. <span class="span2">71</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(74)">Actividad interactiva <span class="span2">74</span></a></p>
+			<p><a class="a2" href="javascript:bibliografia()">REFERENCIAS<span class="span2"></span></a></p>
+
+			<h3>4</h3>
+		</div>
+		
+<!-- /   /   /   / -->
+		<div class="derecha">
+		<div class="gradient"></div>
+		<h2>Índice de figuras</h2>
+			<p><a class="a2" href="javascript:myFunction(7)">Figura 1. Estructura del grupo de investigación.  <span class="span2">7</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(17)">Figura 2. Interfaces de usuarios <span class="span2">17</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(21)">Figura 3. Teclado de alto contraste <span class="span2">21</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(28)">Figura 4. Estudios de Brecha Digital ColombiaTIC <span class="span2">28</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(42)">Figura 5. Curva de Bèzier <span class="span2">42</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(43)">Figura 6. Curva de Bèzier  <span class="span2">43</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(44)">Figura 7. Curva de Bèzier <span class="span2">44</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(45)">Figura 8. Clasificación de las curvas de Bèzier <span class="span2">45</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(47)">Figura 9. Coordenadas de puntos  <span class="span2">47</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(50)">Figura 10. Combinaciones <span class="span2">50</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(51)">Figura 11. Otra combinación posible <span class="span2">51</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(52)">Figura 12. Grado de la curva <span class="span2">52</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(54)">Figura 13. Definición de la curva <span class="span2">54</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(55)">Figura 14. Superficie de Bèzier <span class="span2">55</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(56)">Figura 15. Superficie de Bèzier resultante <span class="span2">56</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(62)">Figura 16. Tipos de interpolación  <span class="span2">62</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(64)">Figura 17. Estructura de un compilador  <span class="span2">64</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(66)">Figura 18. Procedimiento del tokenizador para lexemas del lenguaje de señas  <span class="span2">66</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(67)">Figura 19. Escritorio del tokenizador para lexemas del lenguaje de señas  <span class="span2">67</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(68)">Figura 20. Logo del entorno de desarrollo integrado Visual Studio  <span class="span2">68</span></a></p>
+			<p><a class="a2" href="javascript:myFunction(70)">Figura 21. Proyecto de Visual C#  <span class="span2">70</span></a></p>
+
+			<h3>5</h3>
+		</div>		
+		
+<!-- /   /   /   / -->
+		<div class="izquierda">
+		<div class="gradient"></div>
+	
+			<h3>6</h3>
+		</div>		
+
+		
+<!-- /   /   /   / -->
+		<div class="derecha">
+		<div class="gradient"></div>
+			<h1>Prefacio</h1>
+			<p class="APA">Leer analíticamente un texto es dividirlo en unidades que proporcionen algún tipo de información y establecer, luego, cómo estas partes se interrelacionan y muestran el panorama de lo que se quiere decir. Al leer un problema de manera analítica, uno puede hacerse estas ¿cuáles son los datos que nos proporciona?, ¿qué datos son relevantes para resolver el problema?, ¿qué debemos encontrar?, ¿qué condiciones se imponen a lo que buscamos?, entre otras interrogantes que ayudarán a que el estudiante se familiarice y le pierda temor a la situación.
+			 </p>
+
+			 <br> 
+			 <a href="imagenes/grupoGICEI.png" frameborder="0" allowfullscreen target="_blank" onclick="window.open(this.href,this.target,'scrollbars=no,resizable=yes,location=no,titlebar=no,,menubar=no,status=no,toolbar=no,left='+(screen.availWidth/2-610)+',top=0,width=610,height=586');return false;"><p align="center"><img src="imagenes/grupoGICEI.png" height="300"><br><font size="5" color="navy">Ampliar</font></a>
+			</p>
+			<p><i>Figura 1.</i> Estructura del grupo de investigación.
+			<br><span style="font-size: 12pt">Fuente: diseño de los autores</span>
+			</p>
+	
+			<div class="footer"><hr class="notaspie" align="left">
+			<sup>1</sup>&nbsp;&nbsp;&nbsp;Véase <a href="http://proyectodescartes.org/iCartesiLibri/descripcion.htm" target="_blank"><font color="blue">http://proyectodescartes.org/iCartesiLibri/descripcion.htm</font></a>.</div>
+			<h3>7</h3>
+		</div>
+		
+<!-- /   /   /   / -->
+		<div class="izquierda">
+		<div class="gradient"></div>
+			<p><b>¿Por qué HTML5?</b></p>
+
+			<p class="APA">La lectura analítica ayuda mucho en la comprensión lectora del texto que da origen a un problema, pero no garantiza el camino a su solución. Leer analíticamente no es identificar las palabras claves ni buscar tips para encontrar la variable (estos son procesos mecánicos que no ayudan a comprender cabalmente un problema). En la vida real, los problemas matemáticos pueden no contener esas palabras claves que aparecen en problemas diseñados para libros de texto, por lo que el estudiante enfocará erradamente un problema si hace uso de este mecanismo.
+La lectura analítica es importante en la comprensión de problemas, pues estos textos contienen elementos matemáticos como números, diagramas, relaciones dentro de una historia o un contexto real complejo, por lo que no es lo mismo que leer un cuento o un ensayo. De hecho, hay personas que comprenden perfectamente textos humanísticos, pero no aquellos que contienen elementos matemáticos.</p>
+
+			<p class="APA">El HTML5 tiene por objetivo la homologación de todos los buscadores y sistemas operativos para que cualquier dispositivo móvil pueda desplegar gráficos, animaciones y videos, entre otras aplicaciones multimedia. Desde 1998 el Consorcio de Internet (World Wide Web Consortium W3C)  dejó de evolucionar el protocolo HTML y comenzaron a buscar nuevas maneras de desplegar una red más atractiva desde su base. Tras diversas pruebas y decisiones, en 2007 se formó el grupo actual de trabajo del W3C que revisa la implementación de HTML5.</p>
+			
+			
+
+			<h3>8</h3>
+		</div>
+		
+<!-- /   /   /   / -->
+		<div class="derecha">	
+		<div class="gradient"></div>
+			<h2>¿Qué es un Objeto Interactivo de Aprendizaje ?</h2>
+			<p class="APA">Dado que en este libro el núcleo de desarrollo es el objeto interactivo de aprendizaje, es necesario realizar un inciso en el que se detalle el significado conceptual del mismo, en especial cuando se le está anexando el calificativo de “interactivo”. Existe una amplia gama de definiciones sobre lo que debemos entender por un objeto de aprendizaje (OA). El Comité de Estándares de Tecnologías de Aprendizaje (LTSC: Learning Technology Standards Committee) propone la siguiente definición:<p>
+
+			<p class="APA">"Un Objeto de Aprendizaje es cualquier entidad, digital o no digital, la cual puede ser usada, reusada o  referenciada durante el aprendizaje apoyado por tecnología […] Ejemplos de Objetos de Aprendizaje  incluyen una lección, un simple archivo JPEG, contenidos multimedia, un video, simulaciones, cuadros digitales, animaciones…”.</p>
+
+			<p class="APA">Es común considerar como OA a cualquier recurso digital que pueda ser reutilizado en diferentes ámbitos educativos, teniendo en cuenta que el concepto de reutilización está influido por el contexto en el que puede ser utilizado un OA determinado. Una fotografía sin texto tiene más poder de reutilización que otra que lo incorpore, pues en este último caso se presentan problemas de comprensión del lenguaje.<p>
+			<p class="APA">En general, parece haber consenso en lo referido a que sean recursos digitales que se pueden combinar para construir lecciones, módulos, cursos o, incluso, todo un plan de estudios.</p> 
+
+			<h3>9</h3>
+		</div>
+		
+<!-- /   /   /   / -->
+		<div class="izquierda">	
+		<div class="gradient"></div>
+		<br><br>
+			<p class="APA">Visto de esta manera, el  desarrollo de objetos de aprendizaje se configura como un proceso que contempla una secuencia que va desde el diseño, el análisis de herramientas disponibles, la definición de criterios, la reflexión, y a su vez su producción, aplicación y evaluación. La definición más aceptada, desde el contexto de los recursos digitales, establece que el diseño debe contemplar objetivos como: la reutilización, de ahí la posibilidad que brinda para construir unidades más complejas en diferentes contextos; la interoperabilidad, la durabilidad (objetos que no requieren de actualizaciones periódicas) y la accesibilidad (fácilmente identificados y encontrados, bien clasificados por categorías, lo que obliga a almacenarlos en metadatos asociados a él).</p>
+			
+			<p class="APA">Todo lo anterior puede ser válido en el entorno de la web 1.0; sin embargo, en el contexto de los nuevos ambientes virtuales de aprendizaje, el concepto de OA adquiere un nuevo significado o, para ser más precisos, incluye un nuevo componente: la interactividad. Por tanto un OA debe diseñarse a partir de  criterios como atemporalidad didáctica, reutilización, interacción y accesibilidad. No en vano, para el caso de las matemáticas, el proyecto ''Definición y selección de competencias clave'', impulsado por la Organización para la Cooperación y el Desarrollo Económico (OCDE), clasifica las destrezas matemáticas como herramientas interactivas, necesarias para resolver múltiples tareas en diversas situaciones; desde esta taxonomía, los OA de la web 1.0 no serían compatibles con estas destrezas, si bien se constituyen en recursos valiosos para los procesos de enseñanza-aprendizaje, ya que no permiten interacción alguna y por tanto podemos considerar que no son más que objetos de información.</p>
+			<h3>10</h3>
+		</div>
+
+
+			
+		
+
+	
+			
+		<div class="cover">
+		<div class="gradient"></div>
+			<p align="center" style="position: absolute; bottom: 350px; left:0; right:0;"> <a id="logo"><img src="images/logo3.svg" alt="Descartes"/></a>	</p>
+		
+		
+	</div>
+</div>
+
+
+	<script>
+		$("#book").turn({
+			display: 'double',
+			acceleration: true,
+			gradients: true,
+			elevation: 50,
+		});
+		$(window).bind('keydown', function(e){
+		if (e.target && e.target.tagName.toLowerCase()!='input')
+			if (e.keyCode==37)
+				$('#book').turn('previous');
+			else if (e.keyCode==39)
+				$('#book').turn('next');
+		});
+	</script>
+	
+	
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction(i) {
+   
+	$('#book').turn('page',i+2);
+}
+
+function myFunction2() {
+   
+	$('#book').turn('next');
+}
+
+function bibliografia() {
+   
+		$('#book').turn('page',76+2);
+}
+
+function myFunction3() {
+   
+	$('#book').turn('previous');
+}
+
+function calculadora() {
+	 var myWindow = window.open("images/biblo.htm", "_blank","toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=200,width=800,height=700");
+}
+
+function imprimir() {
+	 var myPrinter = window.print();
+}
+
+function ayuda() {
+	 var myWindow = window.open("images/info.html", "_blank","toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=200,width=800,height=600");
+}
+
+function tabla() {
+	 var myWindow = window.open("interactivos/tabla.html", "_blank","toolbar=yes,scrollbars=yes,resizable=yes,top=100,right=800,width=800,height=600");
+}
+
+function gg() {
+	 var myWindow = window.open("GeoGebra5.0/interactivo6/index.html", "_blank","toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=200,width=1080,height=620");
+}
+
+</script>
+<div class="dropdown">
+<button onclick="myFunction(3)" class="dropbtn2"></button>
+</div>
+
+<div class="dropdown">
+<button onclick="myFunction(4)" class="dropbtn"></button>
+</div>
+
+
+
+
+<div class="dropdown">
+<button onclick="calculadora()" class="dropbtn4"></button>
+</div>
+<div class="dropdown">
+
+<button onclick="imprimir()" class="dropbtn5"></button>
+<style type="text/css" media="print">
+  @page {size: A4 landscape; margin-right: 3%; margin-left: -5%; top-center; }
+  body{zoom:98.6%;}
+ </style>
+</div>
+<div class="dropdown">
+<button onclick="ayuda()" class="dropbtn6"></button>
+</div>
+
+
+
+<div class="nextdown">
+<button onclick="myFunction2()" class="nextbtn"></button>
+</div>
+<div class="prevdown">
+<button onclick="myFunction3()" class="prevbtn"></button>
+</div>
+</body>
+		
+</html>
+		

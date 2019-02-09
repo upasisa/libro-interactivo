@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bèzier+Animado</title>
+    <script src="processing.js"></script>
+  </head>
+  <body>
+    <h1>Gráfica a partir de Curva de Bèzier animada</h1>
+    <script type="text/processing">
+float t = 0;
+void setup() {
+  size(800, 800);
+  background(0);
+  frameRate(100);
+}
+
+void draw() {
+  //background(0);
+
+  stroke(255);
+  strokeWeight(1);
+  noFill();
+
+  float x1 = func(t)*cos(1*t);
+  float y1 = func(t)*sin(1*t);
+
+  x1 = map(x1, -1, 1, 0, width);
+  y1 = map(y1, -1, 1, height, 0);
+
+
+  float x2 = func(t)*cos(2*t);
+  float y2 = func(t)*sin(2*t);
+
+  x2 = map(x2, -1, 1, 0, width);
+  y2 = map(y2, -1, 1, height, 0);
+
+
+  float x3 = func(t)*cos(3*t);
+  float y3 = func(t)*sin(3*t);
+
+  x3 = map(x3, -1, 1, 0, width);
+  y3 = map(y3, -1, 1, height, 0);
+  
+  
+  float x4 = func(t)*cos(1*t);
+  float y4 = func(t)*sin(1*t);
+
+  x4 = map(x4, -1, 1, 0, width);
+  y4 = map(y4, -1, 1, height, 0);
+  
+  t = t + TWO_PI/300;
+  
+  //ellipse(x1,y1,3,3);
+  //ellipse(x2,y2,6,6);
+  //ellipse(x3,y3,9,9);
+  //ellipse(x4,y4,12,12);
+  
+  bezier(x1,y1,x2,y2,x3,y3,x4,y4);
+  if (frameCount % 3 == 0){
+    //saveFrame("./out2/b####.tif");
+  }
+  if (t > TWO_PI){
+    //save("./out/saveFrame.png");
+    //exit();
+    t = 0;
+    background(0);
+  }
+}
+
+float func(float t){
+  return 1;
+}
+    </script>
+    <canvas></canvas>
+  </body>
+</html>
